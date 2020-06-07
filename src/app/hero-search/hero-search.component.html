@@ -1,0 +1,19 @@
+<div id = "search-component">
+
+  <h4>
+    <label for = "search-box">Search</label>
+  </h4>
+
+  <input #searchBox id = "search-box" (input) = "this.search(searchBox.value) " />
+
+  <ul class = "search-result">
+    <li class = "search-result"
+        *ngFor="let item of heroes$ | async"> <!-- Konvencija: naziv prom$; ako je prom Observable -->
+                                              <!-- async - automatski se prijavljuje na heroes$, ne mora u .ts-->
+      <a routerLink = "/detail/{{ item.id }}" class = "search-result">
+        {{ item.name }}
+      </a>
+    </li>
+  </ul>
+
+</div>

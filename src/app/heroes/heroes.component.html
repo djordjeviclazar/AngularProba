@@ -1,0 +1,69 @@
+<!-- 
+<h2> 
+    {{ hero.name | uppercase }} Details
+</h2>
+
+<div> <span> ID: </span> {{ hero.id }} </div>
+-->
+
+<!--  <div> <span> Name: </span> {{ hero.name }} </div> -->
+
+<!-- Two way data binding: -->
+<!-- 
+    <div>
+    <label>
+        name: <input [(ngModel)]="hero.name" placeholder="name"/>
+    </label>
+    </div>
+-->
+
+<div>
+    <ul class = "heroes">
+        <div *ngFor="let item of this.heroes">
+            <ng-template [ngIf] = "this.isCrnac(item)" [ngIfElse] = "NijeCRNAC">
+                <li class = "CrnListItem">
+                    <button [routerLink]="['/detail', item.id]" class=CrnoDugme >
+                    </button>
+                </li>
+            </ng-template>
+            <ng-template #NijeCRNAC>
+                <li>
+                    <!-- (click) = this.onSelect(item)
+                        [class.selected]="item === selectedHero">
+                    -->
+                    <!-- class.CSSclass = "uslov" -->
+            
+                    <a routerLink = "/detail/{{ item.id }}"  >
+                        <!-- [routerLink]="['/detail', item.id]" -->
+                        <span class = "badge"> {{ item.id }} </span>
+                        {{ item.name }}
+                    </a>
+                    <button class = "delete" 
+                            title="delete hero"
+                            (click) = "this.delete(item)">
+                            X
+                    </button>
+                </li>
+            </ng-template>
+        </div>
+    </ul>
+</div>
+<br>
+
+<!--
+<app-hero-detail [hero] = "this.selectedHero"></app-hero-detail>
+-->
+
+<div>
+    Adding heroes
+    <br>
+    <label> 
+        Hero name:
+        <input #heroName />
+    </label>
+
+    <button (click) = "this.add(heroName.value); heroName.value = ''">
+        add
+    </button>
+
+</div>

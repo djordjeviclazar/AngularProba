@@ -1,0 +1,28 @@
+<!--
+  <ng-template [ngIf]="this.hero" [ngIfElse]="NotSelected">
+  <h2> {{ this.hero.name | uppercase }} Details</h2>
+  <div> <span>ID: </span> {{ this.hero.id }} </div>
+  <div> 
+      <label> Name:
+          <input [(ngModel)] = "this.hero.name" placeholder = "name" />
+      </label>
+  </div>
+</ng-template>
+
+<ng-template #NotSelected> If you want more details click on preffered hero from list </ng-template>
+
+<button (click) = "goBack()"> go back</button>
+-->
+<div *ngIf="hero">
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name"/>
+    </label>
+  </div>
+  <button (click)="goBack()">go back</button>
+</div>
+<div>
+  <button (click) = "this.save()">Save</button>
+</div>
